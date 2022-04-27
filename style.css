@@ -55,9 +55,9 @@ body {
 
 .content {
   margin-bottom: 20px;
-  color: indianred;
 }
 
 .error {
+  color: indianred;
   text-align: center;
 }

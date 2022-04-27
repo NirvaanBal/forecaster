@@ -4,14 +4,21 @@ const content = document.querySelector('.content');
 const errField = document.querySelector('.error');
 let error = false;
 
-// https://api.giphy.com/v1/gifs/translate?api_key=LapI2vbsyYOLG8Vh0AefC5RiPyDO2NFl&s=cats
+async function getGIF(value) {
+  const response = await fetch(
+    `https://api.giphy.com/v1/gifs/translate?api_key=LapI2vbsyYOLG8Vh0AefC5RiPyDO2NFl&s=${value}`
+  );
+
+  const result = response.json();
+  return result.data.images.original.url;
+}
+
 async function weatherOf(location) {
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=32be7ec8fb314575c5442974e415a105&units=metric`
   );
 
   const data = await response.json();
-
   return data;
 }
 

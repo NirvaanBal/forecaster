@@ -63,9 +63,6 @@ body {
 }
 
 .content div {
-  width: 300px;
-  height: 300px;
-  border-radius: 300px;
   position: relative;
   overflow: hidden;
   border: solid 4px #fff;
@@ -73,21 +70,10 @@ body {
 }
 
 .content h2 {
-  padding: 5px 10px;
-  position: absolute;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px 15px;
+  background-color: #fff;
   color: #292929;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  text-align: center;
-  padding-bottom: 8px;
-}
 
-.content img {
-  width: 300px;
-  height: 300px;
-  border-radius: 300px;
-  object-fit: cover;
+  position: absolute;
+  right: 0;
 }

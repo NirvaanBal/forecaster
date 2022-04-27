@@ -38,7 +38,7 @@ function getReport(city) {
       };
     })
     .catch((error) => {
-      console.log(error);
+      console.log();
     });
 }
 
@@ -63,8 +63,10 @@ form.addEventListener('submit', async (e) => {
   if (!error) {
     const data = await getReport(searchField.value);
     if (!data) {
+      console.log('reached');
       errField.textContent = 'Provide a valid location';
     } else {
+      content.innerHTML = 'Loading...';
       const weatherGIF = await getGIF(data.weather);
       content.innerHTML = `
         <div>

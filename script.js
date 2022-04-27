@@ -1,4 +1,8 @@
 const API_KEY = '32be7ec8fb314575c5442974e415a105';
+const form = document.querySelector('form');
+const searchField = document.querySelector('input[type="search"]');
+const content = document.querySelector('.content');
+const errField = document.querySelector('.error');
 
 async function weatherOf(location) {
   const response = await fetch(
@@ -19,3 +23,10 @@ function getReport(city) {
     };
   });
 }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  getReport(searchField.value).then((data) => {
+    console.log(data);
+  });
+});

@@ -3,6 +3,7 @@ const form = document.querySelector('form');
 const searchField = document.querySelector('input[type="search"]');
 const content = document.querySelector('.content');
 const errField = document.querySelector('.error');
+let error = false;
 
 async function weatherOf(location) {
   const response = await fetch(
@@ -24,9 +25,28 @@ function getReport(city) {
   });
 }
 
+searchField.addEventListener('input', (e) => {
+  if (!searchField.checkValidity()) {
+    errField.textContent = 'Only letters are allowed';
+    error = true;
+  } else {
+    errField.textContent = '';
+    error = false;
+  }
+});
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  getReport(searchField.value).then((data) => {
-    console.log(data);
-  });
+
+  if (searchField.validity.valueMissing) {
+    errField.textContent = 'No location is provided';
+    error = true;
+  }
+
+  if (!error) {
+    errField.textContent = '';
+    getReport(searchField.value).then((data) => {
+      console.log(data);
+    });
+  }
 });

@@ -60,6 +60,7 @@ body {
 
 .error {
   color: indianred;
+  text-align: center;
 }
 
 .content div {

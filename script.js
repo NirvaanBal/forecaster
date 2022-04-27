@@ -54,8 +54,10 @@ form.addEventListener('submit', async (e) => {
     const data = await getReport(searchField.value);
     const weatherGIF = await getGIF(data.weather);
     content.innerHTML = `
-      <h2>${data.temp}<sup>&deg;c</sup></h2>
-      <img src="${weatherGIF}" alt="${data.weather}" />
+      <div>
+        <h2>${data.temp}<sup>&deg;c</sup></h2>
+        <img src="${weatherGIF}" alt="${data.weather}" />
+      </div>
     `;
   }
 });

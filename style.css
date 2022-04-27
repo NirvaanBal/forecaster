@@ -17,7 +17,7 @@ body {
   background-color: #292929;
   color: #fff;
 
-  width: 960px;
+  width: 600px;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -54,10 +54,40 @@ body {
 }
 
 .content {
-  margin-bottom: 20px;
+  margin: 30px 0;
 }
 
 .error {
   color: indianred;
   text-align: center;
+}
+
+.content div {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  position: relative;
+  overflow: hidden;
+  border: solid 4px #fff;
+  margin: 0 auto;
+}
+
+.content h2 {
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #292929;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.content img {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  object-fit: cover;
 }

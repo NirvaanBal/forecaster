@@ -5,6 +5,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: inherit;
+  outline: none;
+  border: none;
 }
 
 html {
@@ -14,4 +16,48 @@ html {
 body {
   background-color: #292929;
   color: #fff;
+
+  width: 960px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.header form {
+  flex: 1;
+  display: flex;
+}
+
+.header form > * {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.header form input {
+  flex: 1;
+}
+
+.header form button {
+  width: 100px;
+  cursor: pointer;
+}
+
+.header form button:hover {
+  background-color: gray;
+  color: #fff;
+}
+
+.content {
+  margin-bottom: 20px;
+  color: indianred;
+}
+
+.error {
+  text-align: center;
 }

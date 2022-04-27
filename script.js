@@ -9,3 +9,13 @@ async function weatherOf(location) {
 
   return data;
 }
+
+function getReport(city) {
+  return weatherOf(city).then((res) => {
+    return {
+      temp: res.main.temp,
+      weather: res.weather[0]['description'],
+      location: res.name,
+    };
+  });
+}

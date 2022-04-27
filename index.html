@@ -8,8 +8,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Forecaster</h1>
-    <p>A weather forecasting app.</p>
+    <div class="header">
+      <h1>Forecaster</h1>
+      <p>A weather forecasting app.</p>
+
+      <form novalidate>
+        <input
+          type="search"
+          placeholder="Enter name of the location..."
+          pattern="[a-zA-Z]+"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="author">ਨਿਰਵਾਣ ਬੱਲ نِروَاݨ بلّ</div>
 
     <script src="script.js"></script>
   </body>

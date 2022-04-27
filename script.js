@@ -9,7 +9,7 @@ async function getGIF(value) {
     `https://api.giphy.com/v1/gifs/translate?api_key=LapI2vbsyYOLG8Vh0AefC5RiPyDO2NFl&s=${value}`
   );
 
-  const result = response.json();
+  const result = await response.json();
   return result.data.images.original.url;
 }
 
@@ -42,7 +42,7 @@ searchField.addEventListener('input', (e) => {
   }
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   if (searchField.validity.valueMissing) {
@@ -51,13 +51,11 @@ form.addEventListener('submit', (e) => {
   }
 
   if (!error) {
-    errField.textContent = '';
-    getReport(searchField.value).then((data) => {
-      console.log(data);
-      const contentHTML = `
-        <h2>${data.temp}<sup>&deg;c</sup></h2>
-      `;
-      content.innerHTML = contentHTML;
-    });
+    const data = await getReport(searchField.value);
+    const weatherGIF = await getGIF(data.weather);
+    content.innerHTML = `
+      <h2>${data.temp}<sup>&deg;c</sup></h2>
+      <img src="${weatherGIF}" alt="${data.weather}" />
+    `;
   }
 });

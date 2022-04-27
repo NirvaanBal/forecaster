@@ -51,6 +51,8 @@ form.addEventListener('submit', async (e) => {
   }
 
   if (!error) {
+    content.textContent = 'Loading...';
+
     const data = await getReport(searchField.value);
     const weatherGIF = await getGIF(data.weather);
     content.innerHTML = `

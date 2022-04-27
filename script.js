@@ -14,22 +14,32 @@ async function getGIF(value) {
 }
 
 async function weatherOf(location) {
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=32be7ec8fb314575c5442974e415a105&units=metric`
-  );
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=32be7ec8fb314575c5442974e415a105&units=metric`
+    );
 
-  const data = await response.json();
-  return data;
+    if (!response.ok) throw new Error('Invalid');
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
 }
 
 function getReport(city) {
-  return weatherOf(city).then((res) => {
-    return {
-      temp: res.main.temp,
-      weather: res.weather[0]['description'],
-      location: res.name,
-    };
-  });
+  return weatherOf(city)
+    .then((res) => {
+      return {
+        temp: res.main.temp,
+        weather: res.weather[0]['description'],
+        location: res.name,
+      };
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 searchField.addEventListener('input', (e) => {
@@ -51,15 +61,17 @@ form.addEventListener('submit', async (e) => {
   }
 
   if (!error) {
-    content.textContent = 'Loading...';
-
     const data = await getReport(searchField.value);
-    const weatherGIF = await getGIF(data.weather);
-    content.innerHTML = `
-      <div>
-        <h2>${data.temp}<sup>&deg;c</sup></h2>
-        <img src="${weatherGIF}" alt="${data.weather}" />
-      </div>
-    `;
+    if (!data) {
+      errField.textContent = 'Provide a valid location';
+    } else {
+      const weatherGIF = await getGIF(data.weather);
+      content.innerHTML = `
+        <div>
+          <h2>${data.temp}<sup>&deg;c</sup></h2>
+          <img src="${weatherGIF}" alt="${data.weather}" />
+        </div>
+      `;
+    }
   }
 });

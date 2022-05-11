@@ -1,6 +1,6 @@
 # Forecaster
 
-A weather forecasting app powered by OpenWeatherMap API.
+A weather forecasting app powered by OpenWeatherMap API. [Live here](https://nirvaanbal.github.io/forecaster/).
 
 ## Features
 

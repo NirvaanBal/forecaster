@@ -14,6 +14,10 @@ A weather forecasting app powered by OpenWeatherMap API. [Live here](https://nir
 - HTML
 - CSS
 
+## Raison d'être
+
+The motive behind this project was to learn API handling with ES6+ async/await feature.
+
 ## Bibliography
 
 - Idea - [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app)
